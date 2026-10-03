@@ -11,49 +11,80 @@ installation, or build step is required to open a document.
 ## Download and install
 
 - [Latest official release](https://github.com/MenachemBarak/mdd/releases/latest)
-- [MDD 0.10.0 release notes](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.0)
-- [Download mdd-0.10.0.vsix](https://github.com/MenachemBarak/mdd/releases/download/v0.10.0/mdd-0.10.0.vsix)
-- [SHA256SUMS](https://github.com/MenachemBarak/mdd/releases/download/v0.10.0/SHA256SUMS)
+- [MDD 0.10.1 release notes](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.1)
+- [Download mdd-0.10.1.vsix](https://github.com/MenachemBarak/mdd/releases/download/v0.10.1/mdd-0.10.1.vsix)
+- [SHA256SUMS](https://github.com/MenachemBarak/mdd/releases/download/v0.10.1/SHA256SUMS)
 
 Requires Visual Studio Code **1.96.0 or newer**.
 
 1. Download the VSIX and verify its SHA-256 against `SHA256SUMS`.
 2. In VS Code, open Extensions, choose **Install from VSIX...** from the
-   Extensions menu, and select `mdd-0.10.0.vsix`.
+   Extensions menu, and select `mdd-0.10.1.vsix`.
 3. Reload the VS Code window when prompted, then open an `.mdd` file.
 
 Alternatively, from the download directory:
 
 ```sh
-code --install-extension mdd-0.10.0.vsix
+code --install-extension mdd-0.10.1.vsix
 ```
 
-Approved 0.10.0 archive SHA-256:
+Approved 0.10.1 archive SHA-256:
 
 ```text
-da683a82fcb7791f7e7532c292d5c5f578ef4b533442cbf91913b063addbdcc0
+8bb6293c67f6e213ad9801bfe7890ebba068fed6e46d535fedd05f8a9f8ededa
 ```
 
-## Version compatibility in 0.10.0
+## Version compatibility in 0.10.1
 
-Current-version documents are editable. Supported older documents are opened
-**read-only** using the trusted current runtime; opening or saving does not
-silently migrate them. Use the offered **Copy upgrade prompt** for an explicit,
-SHA-guarded migration with an exact-byte backup before editing an older file.
+Current-version and supported older local documents are **editable normally**
+through the owned MDD editor using the trusted current runtime. A small,
+theme-aware **light-red alert** explains that saving upgrades an older file
+and that the original is backed up.
 
-The compatibility registry covers 29 historical schema-1 releases:
+Opening a clean file does not rewrite it or create a backup. Before the first
+native buffer mutation, MDD creates and verifies a uniquely named, create-only
+backup of the exact original on-disk bytes. The first edit includes the guarded
+one-time runtime upgrade, protecting subsequent File Save/autosave and the MDD
+Save command after edits through the owned MDD path. Changed disk bytes or
+backup failures abort the mutation and retain the draft.
+
+Dirty local documents are backed up and upgraded in the trusted buffer before
+an editable MDD view is exposed, preserving unsaved canonical content. Existing
+backups, including earlier explicitly chosen fixed paths, are never overwritten.
+
+The compatibility registry includes 0.10.0 and these 29 historical schema-1 releases:
 0.2.0, 0.3.0, 0.3.1, 0.4.0, 0.4.1, 0.5.0, 0.5.1, 0.6.0, 0.6.1, 0.6.2,
 0.6.3, 0.6.4, 0.7.0, 0.8.0, 0.8.1, 0.8.2, 0.8.3, 0.8.4, 0.9.0, 0.9.1,
 0.9.2, 0.9.3, 0.9.4, 0.9.5, 0.9.6, 0.9.7, 0.9.8, 0.9.9, and 0.9.10.
 
-Unregistered versions, unknown schemas, and unsupported features are not
-promised to work. Newer files are not down-migrated. Direct editing of older
-files and a light-red compatibility alert are **not included in 0.10.0**.
+### Portable upgrade prompts
+
+Upgrade prompts identify the official GitHub release, versioned VSIX, and
+checksum, and locate the installed provider dynamically:
+
+```sh
+code --locate-extension menachembarak.mdd
+```
+
+No machine-specific extension installation path is assumed. Explicit
+agent-driven migration retains its SHA, backup, and concurrency guards.
+
+### Limits
+
+- Remote/virtual automatic upgrades are blocked read-only.
+- Raw Text Editor changes/saves outside the owned MDD path are not covered by
+  the automatic migration/backup guarantee.
+- Newer versions and unknown or unsupported profiles remain read-only.
+  Unknown schemas/features are not promised supported; files are not
+  down-migrated.
+
+[Historical 0.10.0](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.0)
+retains its original read-only-until-explicit-migration behavior and release notes.
 
 ## Distribution scope
 
 This repository contains official release documentation, not imported
-development history. The 0.10.0 VSIX is the exact independently reviewed and
+development history. The 0.10.1 VSIX is the exact independently reviewed and
 approved archive, unchanged from its verification. Some bundled documentation
 still labels that frozen artifact a candidate; the official release notes
 record its publication and limitations.
