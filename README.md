@@ -11,28 +11,63 @@ installation, or build step is required to open a document.
 ## Download and install
 
 - [Latest official release](https://github.com/MenachemBarak/mdd/releases/latest)
-- [MDD 0.10.3 release notes](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.3)
-- [Download mdd-0.10.3.vsix](https://github.com/MenachemBarak/mdd/releases/download/v0.10.3/mdd-0.10.3.vsix)
-- [SHA256SUMS](https://github.com/MenachemBarak/mdd/releases/download/v0.10.3/SHA256SUMS)
+- [MDD 0.10.4 release notes](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.4)
+- [Download mdd-0.10.4.vsix](https://github.com/MenachemBarak/mdd/releases/download/v0.10.4/mdd-0.10.4.vsix)
+- [SHA256SUMS](https://github.com/MenachemBarak/mdd/releases/download/v0.10.4/SHA256SUMS)
 
 Requires Visual Studio Code **1.96.0 or newer**.
 
 1. Download the VSIX and verify its SHA-256 against `SHA256SUMS`.
 2. In VS Code, open Extensions, choose **Install from VSIX...** from the
-   Extensions menu, and select `mdd-0.10.3.vsix`.
+   Extensions menu, and select `mdd-0.10.4.vsix`.
 3. Reload the VS Code window when prompted, then open an `.mdd` file.
 
 Alternatively, from the download directory:
 
 ```sh
-code --install-extension mdd-0.10.3.vsix
+code --install-extension mdd-0.10.4.vsix
 ```
 
-Approved 0.10.3 archive SHA-256:
+Approved 0.10.4 archive SHA-256:
 
 ```text
-571578b4059de43c23e7afe6c5c56bec616695f52111307703722de7067d40ef
+c52c3269cdd15f14365cf1e7449050af964450328dfdbe9dbdbfbd405dea8ba6
 ```
+
+## What's new in 0.10.4
+
+- Optional validated `listFormat: "items-v1"` and block ancestry support
+  structured list-item content. Runtime 0.10.4 is registered under
+  `v1-list-items`; historical version profiles are unchanged.
+- A new diagram can be actual content of empty ordered-list item 2, with no
+  outside placeholder. Enter after the last atom continues to item 3.
+- Nested bullet continuation, clipboard item-graph remapping, sequence-aware
+  Markdown item-1 markers, Save/Reopen, and Undo support the new item structure.
+
+Insertion/paste is limited to supported **empty-item/single-atom** cases.
+Mid-text, text-bearing, multi-atom paste, before-atom Enter, and unsafe gaps
+are visibly refused with **zero edits**. Flat old Markdown list-fragment paste
+is refused. Arbitrary inline insertion is not claimed.
+
+Without the DOM `moveBefore` API, new plain-Markdown/new-iframe paths work,
+including initial new-diagram insertion into empty ordered item 2. Unsafe
+topology changes reparenting an existing live iframe are refused with zero
+mutations, preserving draft/state. The VS Code engine floor remains
+`^1.96.0`.
+
+The 0.10.3 heading/body, guides, and default-outline fixes remain, as do
+table/history behavior, embedded diagram engine **1.66.0**, backup protections,
+and official-GitHub upgrade prompts.
+
+### 0.10.4 verification scope
+
+Reported owned isolated-guest checks passed **85/85**, and unchanged
+normal-hook checks passed **36/36**. Exact-package Linux native VS Code
+API-absence checks passed: this simulated missing `moveBefore`, not actual
+VS Code 1.96 or Windows native execution. No new full 105-file Ring 2 suite
+or current all-browser run is claimed. Final independent source review
+approved the frozen artifact, closing the canonical-before-mutation blocker
+and four earlier faults. See the release notes for limitations.
 
 ## What's new in 0.10.3
 
@@ -45,8 +80,9 @@ Approved 0.10.3 archive SHA-256:
 - **R22:** the outline is closed by default and opens/closes with its
   user button. Toggling the outline changes only the view.
 
-**R21**, inserting a diagram inside an empty LI2, is **not included** and
-remains under development. The embedded diagram engine stays at **1.66.0**;
+**In 0.10.3, R21**, inserting a diagram inside an empty LI2, was **not included**.
+The supported scoped form is introduced in 0.10.4 above, not retroactively
+added to 0.10.3. The embedded diagram engine stays at **1.66.0**;
 existing table-cut, parser, Undo/caret, older-file editing/light-red alert,
 backup, and portable-prompt behavior are retained.
 
@@ -95,7 +131,7 @@ the exact package. Previous **Windows native R13-R17/UI** proof covers the
 same UI core; no new Windows native clipboard proof is claimed.
 See the release notes for the full validation scope.
 
-## Version compatibility in 0.10.3
+## Version compatibility in 0.10.4
 
 Current-version and supported older local documents are **editable normally**
 through the owned MDD editor using the trusted current runtime. A small,
@@ -145,11 +181,13 @@ retains its original read-only-until-explicit-migration behavior and release not
 retains its original release notes and assets.
 [Historical 0.10.2](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.2)
 retains its original release notes, assets, and recorded QA limitations.
+[Historical 0.10.3](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.3)
+retains its original release notes, assets, and validation limitations.
 
 ## Distribution scope
 
 This repository contains official release documentation, not imported
-development history. The 0.10.3 VSIX is the exact independently reviewed and
+development history. The 0.10.4 VSIX is the exact independently reviewed and
 approved archive, unchanged from its verification. The official release notes
 record its publication and limitations.
 
