@@ -11,28 +11,62 @@ installation, or build step is required to open a document.
 ## Download and install
 
 - [Latest official release](https://github.com/MenachemBarak/mdd/releases/latest)
-- [MDD 0.10.2 release notes](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.2)
-- [Download mdd-0.10.2.vsix](https://github.com/MenachemBarak/mdd/releases/download/v0.10.2/mdd-0.10.2.vsix)
-- [SHA256SUMS](https://github.com/MenachemBarak/mdd/releases/download/v0.10.2/SHA256SUMS)
+- [MDD 0.10.3 release notes](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.3)
+- [Download mdd-0.10.3.vsix](https://github.com/MenachemBarak/mdd/releases/download/v0.10.3/mdd-0.10.3.vsix)
+- [SHA256SUMS](https://github.com/MenachemBarak/mdd/releases/download/v0.10.3/SHA256SUMS)
 
 Requires Visual Studio Code **1.96.0 or newer**.
 
 1. Download the VSIX and verify its SHA-256 against `SHA256SUMS`.
 2. In VS Code, open Extensions, choose **Install from VSIX...** from the
-   Extensions menu, and select `mdd-0.10.2.vsix`.
+   Extensions menu, and select `mdd-0.10.3.vsix`.
 3. Reload the VS Code window when prompted, then open an `.mdd` file.
 
 Alternatively, from the download directory:
 
 ```sh
-code --install-extension mdd-0.10.2.vsix
+code --install-extension mdd-0.10.3.vsix
 ```
 
-Approved 0.10.2 archive SHA-256:
+Approved 0.10.3 archive SHA-256:
 
 ```text
-5a1e50758682f61882145038a2f6c8b3b964323d8e257b1ddc7e9825c5949314
+571578b4059de43c23e7afe6c5c56bec616695f52111307703722de7067d40ef
 ```
+
+## What's new in 0.10.3
+
+- **R19:** body text aligns with its own heading: H1/body at 0 px,
+  H2/body at 32 px, and H3/body at 64 px. Structural indentation starts
+  with subtitles; authored and list indentation remain additive.
+- **R20:** continuous indentation guides start at the row indentation
+  boundary, before markers, without margin gaps; coverage includes
+  right-to-left, nested, wrapped, and empty rows.
+- **R22:** the outline is closed by default and opens/closes with its
+  user button. Toggling the outline changes only the view.
+
+**R21**, inserting a diagram inside an empty LI2, is **not included** and
+remains under development. The embedded diagram engine stays at **1.66.0**;
+existing table-cut, parser, Undo/caret, older-file editing/light-red alert,
+backup, and portable-prompt behavior are retained.
+
+### 0.10.3 verification scope
+
+Guest normal-hook validation reported **95/95**. The initial composed run
+reported **181/182** with an AddBox timeout; the unchanged isolated assertion
+passed **1/1**. The original composed failure is retained: no full green
+182-case rerun is claimed. Final independent integration review passed
+**6/6** unchanged normal-hook checks and **14/14** focused-selector checks.
+
+Exact-package Linux native VS Code dark/light Save/Reopen checks passed,
+including H1/body 0 px, H2/body 32 px, 1 px list stripes with no gaps, and
+closed-by-default outline, while preserving canonical payload and game bytes.
+No new full Ring 2 or Windows native validation is claimed. The optional
+additional active-highlight assertion was not run.
+
+The original R19 RED commit bypassed hooks using NUL. That deviation remains
+disclosed; the subsequent proper normal-hook guest RED replay was verified.
+See the release notes for the full scope and limitations.
 
 ## What's new in 0.10.2
 
@@ -61,7 +95,7 @@ the exact package. Previous **Windows native R13-R17/UI** proof covers the
 same UI core; no new Windows native clipboard proof is claimed.
 See the release notes for the full validation scope.
 
-## Version compatibility in 0.10.2
+## Version compatibility in 0.10.3
 
 Current-version and supported older local documents are **editable normally**
 through the owned MDD editor using the trusted current runtime. A small,
@@ -109,13 +143,14 @@ agent-driven migration retains its SHA, backup, and concurrency guards.
 retains its original read-only-until-explicit-migration behavior and release notes.
 [Historical 0.10.1](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.1)
 retains its original release notes and assets.
+[Historical 0.10.2](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.2)
+retains its original release notes, assets, and recorded QA limitations.
 
 ## Distribution scope
 
 This repository contains official release documentation, not imported
-development history. The 0.10.2 VSIX is the exact independently reviewed and
-approved archive, unchanged from its verification. Some bundled documentation
-still labels that frozen artifact a candidate; the official release notes
+development history. The 0.10.3 VSIX is the exact independently reviewed and
+approved archive, unchanged from its verification. The official release notes
 record its publication and limitations.
 
 Third-party notices remain bundled in the VSIX. This distribution does not
