@@ -11,28 +11,61 @@ installation, or build step is required to open a document.
 ## Download and install
 
 - [Latest official release](https://github.com/MenachemBarak/mdd/releases/latest)
-- [MDD 0.10.7 release notes](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.7)
-- [Download mdd-0.10.7.vsix](https://github.com/MenachemBarak/mdd/releases/download/v0.10.7/mdd-0.10.7.vsix)
-- [SHA256SUMS](https://github.com/MenachemBarak/mdd/releases/download/v0.10.7/SHA256SUMS)
+- [MDD 0.10.8 release notes](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.8)
+- [Download mdd-0.10.8.vsix](https://github.com/MenachemBarak/mdd/releases/download/v0.10.8/mdd-0.10.8.vsix)
+- [SHA256SUMS](https://github.com/MenachemBarak/mdd/releases/download/v0.10.8/SHA256SUMS)
 
 Requires Visual Studio Code **1.96.0 or newer**.
 
 1. Download the VSIX and verify its SHA-256 against `SHA256SUMS`.
 2. In VS Code, open Extensions, choose **Install from VSIX...** from the
-   Extensions menu, and select `mdd-0.10.7.vsix`.
+   Extensions menu, and select `mdd-0.10.8.vsix`.
 3. Reload the VS Code window when prompted, then open an `.mdd` file.
 
 Alternatively, from the download directory:
 
 ```sh
-code --install-extension mdd-0.10.7.vsix
+code --install-extension mdd-0.10.8.vsix
 ```
 
-Approved corrected 0.10.7 archive SHA-256:
+Official 0.10.8 archive SHA-256:
 
 ```text
-f39362116a383e1fb32280b58f472f95b94724d1333759909db6265866b2b8af
+5674b42bb733b709685c12d5d0c3300872c41bda1d56e4fb88abd2b223a793e7
 ```
+
+## What's new in 0.10.8
+
+Atomic editing repairs (R27, R29-R31, R33, R34) cover Enter, Tab/Shift+Tab,
+copy, cut, paste, Backspace, list numbering and heading-rank changes within
+the supported ownership/content contract, with single-edit history behavior.
+
+Declared list starts and relative content order are preserved. Surviving
+sibling ordinals compact after structural edits; their old ordinal numbers
+are not promised unchanged. Heading-rank handling respects owned and manually
+indented content. The strict `v1-list-items` registry retains 0.10.4 through
+0.10.8 with unchanged schema fields.
+
+This is a limited shared editing contract, not complete parity across all
+providers or platforms. **Saved views remain pending and excluded.** The
+embedded diagram engine remains **1.66.0**; saved-viewport engine 1.67 and MDD9
+are not included.
+
+### 0.10.8 verification scope
+
+Proof is **composed** from frozen core, actual OS clipboard/R31, cross-ancestry
+and list/plain R33, heading, guide-pixel and model/history evidence. Five
+remaining native cross cases passed their one-revision, Undo/Redo/caret,
+URI/version Save and reopen checks. Heading columns matched in dark and light
+themes with 0 px deviation; owned/manual/native-parent/gap cases passed.
+The final differential guide check found no missing or uncovered active guide
+pixels in either theme, distinguished persistent non-guide breadcrumb pixels,
+and included removed-guide and one-pixel-hole controls.
+
+The combined hook checks passed 100 cases; fresh model history covered 100
+seeds at 30 steps each. These are composed scopes, not a new full suite.
+No full Windows-native, all-provider, full-suite or all-task result is claimed.
+Publication distributes the exact approved archive without rebuilding it.
 
 ## What's new in 0.10.7
 
