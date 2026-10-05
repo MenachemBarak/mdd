@@ -11,28 +11,58 @@ installation, or build step is required to open a document.
 ## Download and install
 
 - [Latest official release](https://github.com/MenachemBarak/mdd/releases/latest)
-- [MDD 0.10.6 release notes](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.6)
-- [Download mdd-0.10.6.vsix](https://github.com/MenachemBarak/mdd/releases/download/v0.10.6/mdd-0.10.6.vsix)
-- [SHA256SUMS](https://github.com/MenachemBarak/mdd/releases/download/v0.10.6/SHA256SUMS)
+- [MDD 0.10.7 release notes](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.7)
+- [Download mdd-0.10.7.vsix](https://github.com/MenachemBarak/mdd/releases/download/v0.10.7/mdd-0.10.7.vsix)
+- [SHA256SUMS](https://github.com/MenachemBarak/mdd/releases/download/v0.10.7/SHA256SUMS)
 
 Requires Visual Studio Code **1.96.0 or newer**.
 
 1. Download the VSIX and verify its SHA-256 against `SHA256SUMS`.
 2. In VS Code, open Extensions, choose **Install from VSIX...** from the
-   Extensions menu, and select `mdd-0.10.6.vsix`.
+   Extensions menu, and select `mdd-0.10.7.vsix`.
 3. Reload the VS Code window when prompted, then open an `.mdd` file.
 
 Alternatively, from the download directory:
 
 ```sh
-code --install-extension mdd-0.10.6.vsix
+code --install-extension mdd-0.10.7.vsix
 ```
 
-Approved 0.10.6 archive SHA-256:
+Approved corrected 0.10.7 archive SHA-256:
 
 ```text
-f34a6bf2a7703df7efc8d6d43d0ae7af35de16af0beb7ed65a49aa5bce58df8c
+f39362116a383e1fb32280b58f472f95b94724d1333759909db6265866b2b8af
 ```
+
+## What's new in 0.10.7
+
+R32 continuous indentation guides cover headings, breadcrumbs, blank lines,
+lists, and component padding. Shared ancestor guides continue across equal-depth
+headings and stop on actual outdents. Same-list root-owned sibling margins stay
+continuous; non-list/fullscreen/outdent boundaries prevent erroneous bridges.
+
+Failed marker measurements fall back to a parent checkbox/control or logical
+indentation boundary. Precise native marker-ink alignment is claimed only for
+measured styles, not for custom-style logical-boundary fallbacks.
+
+0.10.6 Delete, persistent breadcrumbs, caret behavior, and diagram engine 1.66.0
+are retained. Atomic Enter/Tab/Paste/numbering/Backspace and saved-view support
+are not included; private engine 1.67 saved-viewport work remains separate.
+The unchanged `v1-list-items` profile registers 0.10.4 through 0.10.7.
+
+### 0.10.7 verification scope
+
+Proof is composed and source-frozen: the broad Linux dark/light, scroll,
+fallback, shared-ancestor, and save/reopen matrix belongs to the historical
+`18649…` baseline, which later showed 15 missing rows in a 16 px same-list
+root-sibling margin. That candidate is not shipped.
+
+The corrected `f393…` package has narrow exact-installed native proof for the
+fixed sibling case and two unpainted outdent/reused-list controls, with frame
+identity, document version, and dirty state unchanged. Parent source review
+covered the original painter/fallback plus the 18-line root-run correction.
+No broad corrected-package matrix, narrow save/reopen rerun, full 105-case
+suite, or real Windows-host proof is claimed. See release notes for details.
 
 ## What's new in 0.10.6
 
@@ -260,11 +290,13 @@ retains its original release notes, assets, and validation limitations.
 retains its original release notes, assets, and validation limitations.
 [Historical 0.10.5](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.5)
 retains its original release notes, assets, and validation limitations.
+[Historical 0.10.6](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.6)
+retains its original release notes, assets, and validation limitations.
 
 ## Distribution scope
 
 This repository contains official release documentation, not imported
-development history. The 0.10.6 VSIX is the exact independently reviewed and
+development history. The corrected 0.10.7 VSIX is the exact independently reviewed and
 approved archive, unchanged from its verification. The official release notes
 record its publication and limitations.
 
