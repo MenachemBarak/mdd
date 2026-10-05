@@ -11,28 +11,62 @@ installation, or build step is required to open a document.
 ## Download and install
 
 - [Latest official release](https://github.com/MenachemBarak/mdd/releases/latest)
-- [MDD 0.10.5 release notes](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.5)
-- [Download mdd-0.10.5.vsix](https://github.com/MenachemBarak/mdd/releases/download/v0.10.5/mdd-0.10.5.vsix)
-- [SHA256SUMS](https://github.com/MenachemBarak/mdd/releases/download/v0.10.5/SHA256SUMS)
+- [MDD 0.10.6 release notes](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.6)
+- [Download mdd-0.10.6.vsix](https://github.com/MenachemBarak/mdd/releases/download/v0.10.6/mdd-0.10.6.vsix)
+- [SHA256SUMS](https://github.com/MenachemBarak/mdd/releases/download/v0.10.6/SHA256SUMS)
 
 Requires Visual Studio Code **1.96.0 or newer**.
 
 1. Download the VSIX and verify its SHA-256 against `SHA256SUMS`.
 2. In VS Code, open Extensions, choose **Install from VSIX...** from the
-   Extensions menu, and select `mdd-0.10.5.vsix`.
+   Extensions menu, and select `mdd-0.10.6.vsix`.
 3. Reload the VS Code window when prompted, then open an `.mdd` file.
 
 Alternatively, from the download directory:
 
 ```sh
-code --install-extension mdd-0.10.5.vsix
+code --install-extension mdd-0.10.6.vsix
 ```
 
-Approved 0.10.5 archive SHA-256:
+Approved 0.10.6 archive SHA-256:
 
 ```text
-9231e5593bf9f8ee43a6b0cb41564731c55a80699be36b9f3c027f7a4a371dfc
+f34a6bf2a7703df7efc8d6d43d0ae7af35de16af0beb7ed65a49aa5bce58df8c
 ```
+
+## What's new in 0.10.6
+
+- Delete exits a collapsed, empty ordinary numbered item like Enter.
+  Existing nested ordinary-item outdent behavior is retained. A complete,
+  top-level owned empty prose item clears ownership; nested or continued
+  owned cases refuse with zero edits.
+- Persistent breadcrumbs default to all headings, including the current leaf.
+  An existing per-document `false` setting remains OFF.
+- Bold current-line highlighting follows the actual caret, not hover or a
+  stale cached selection.
+
+The `v1-list-items` profile retains 0.10.4, 0.10.5, and 0.10.6 compatibility.
+The embedded diagram engine remains **1.66.0**; existing insertion/paste
+refusal limits and backup protections remain.
+
+### 0.10.6 verification scope
+
+Pre-publication real-tests-only RED evidence used the normal guest hook;
+the original RED replay also used the normal public hook. Unchanged
+normal-hook checks passed **60/60**, and scoped checks passed **68/68**.
+These are separate scopes, not a combined full-suite result.
+
+Exact-package native Linux VS Code DARK and LIGHT evidence covers
+Delete/Enter parity, one Undo/Redo, source Save after the expected URI/version
+clean acknowledgement and disk reopen, active-caret vertical alignment within
+0.25 px, all-heading breadcrumbs, OFF-toggle persistence through one edit
+and Undo, non-overlap, and retained iframe Window identity.
+
+No new full 105-file suite or Windows native proof is claimed. Independent
+list keyboard/number-gap work, saved-viewport work, and engine 1.67 are not
+included. This does not claim fixes for normal-text Enter producing item 3,
+Tab at an atom, paste below item 3, or numbering 1, 2, 5, nor all reported
+user bugs. Publication verifies the exact approved bytes, not a new test run.
 
 ## What's new in 0.10.5
 
@@ -170,7 +204,7 @@ the exact package. Previous **Windows native R13-R17/UI** proof covers the
 same UI core; no new Windows native clipboard proof is claimed.
 See the release notes for the full validation scope.
 
-## Version compatibility in 0.10.5
+## Version compatibility in 0.10.6
 
 Current-version and supported older local documents are **editable normally**
 through the owned MDD editor using the trusted current runtime. A small,
@@ -224,11 +258,13 @@ retains its original release notes, assets, and recorded QA limitations.
 retains its original release notes, assets, and validation limitations.
 [Historical 0.10.4](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.4)
 retains its original release notes, assets, and validation limitations.
+[Historical 0.10.5](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.5)
+retains its original release notes, assets, and validation limitations.
 
 ## Distribution scope
 
 This repository contains official release documentation, not imported
-development history. The 0.10.5 VSIX is the exact independently reviewed and
+development history. The 0.10.6 VSIX is the exact independently reviewed and
 approved archive, unchanged from its verification. The official release notes
 record its publication and limitations.
 
