@@ -11,28 +11,70 @@ installation, or build step is required to open a document.
 ## Download and install
 
 - [Latest official release](https://github.com/MenachemBarak/mdd/releases/latest)
-- [MDD 0.10.8 release notes](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.8)
-- [Download mdd-0.10.8.vsix](https://github.com/MenachemBarak/mdd/releases/download/v0.10.8/mdd-0.10.8.vsix)
-- [SHA256SUMS](https://github.com/MenachemBarak/mdd/releases/download/v0.10.8/SHA256SUMS)
+- [MDD 0.10.10 release notes](https://github.com/MenachemBarak/mdd/releases/tag/v0.10.10)
+- [Download mdd-0.10.10.vsix](https://github.com/MenachemBarak/mdd/releases/download/v0.10.10/mdd-0.10.10.vsix)
+- [SHA256SUMS](https://github.com/MenachemBarak/mdd/releases/download/v0.10.10/SHA256SUMS)
 
 Requires Visual Studio Code **1.96.0 or newer**.
 
 1. Download the VSIX and verify its SHA-256 against `SHA256SUMS`.
 2. In VS Code, open Extensions, choose **Install from VSIX...** from the
-   Extensions menu, and select `mdd-0.10.8.vsix`.
+   Extensions menu, and select `mdd-0.10.10.vsix`.
 3. Reload the VS Code window when prompted, then open an `.mdd` file.
 
 Alternatively, from the download directory:
 
 ```sh
-code --install-extension mdd-0.10.8.vsix
+code --install-extension mdd-0.10.10.vsix
 ```
 
-Official 0.10.8 archive SHA-256:
+Official 0.10.10 archive SHA-256:
 
 ```text
-5674b42bb733b709685c12d5d0c3300872c41bda1d56e4fb88abd2b223a793e7
+cab12bd7d67ecefa53a4f990c508f72c75c47db534d89d7d23d3bab97e75f9bf
 ```
+
+## What's new in 0.10.10
+
+- Open a local UTF-8 Markdown file renamed from `.md` to `.mdd` to convert it
+  automatically. MDD verifies a create-only backup of the original bytes before
+  its guarded save, disables scripts in the initial raw document, and waits for
+  the exact raw tab to close before opening a fresh trusted HTML editor.
+  This does not associate `.md` files with MDD or convert documents back to Markdown.
+- Select words and paste a URL to retain their label and formatting. Supported
+  HTTP(S)/mailto links offer hover **Edit** and Ctrl/Cmd-click navigation.
+- Enter on a blank heading creates ordinary paragraph content; intentionally
+  authored empty headings remain distinct. Valid same-version documents with
+  stale compatible runtime metadata are classified separately from genuinely
+  newer or malformed documents.
+- Shared outer Tab and list Enter behavior covers eight atom providers within
+  the supported editing contract, retaining live media frames and playback.
+- Bundled diagram engine **1.67.0** restores saved zoom and world center, with
+  its map collapsed by default. Native diagrams, Excalidraw and Three.js gain
+  saved views while preserving keyboard authoring history.
+- Native Save verifies disk content before reporting **Saved**. A correlated
+  old-baseline result permits one guarded retry for the exact document URI,
+  not recursive workspace edits.
+
+### 0.10.10 verification scope
+
+Validation is **composed**: 64 normal-hook source checks and 38 exact-VSIX
+native cases, plus 40 archive/source mappings, CRC, privacy and bundled-license
+checks. Actual default-open and guide screenshots are included in the retained
+evidence. These are bounded source gates and native proofs, not a clean full
+suite or a clean full-native aggregate; the failed oversized aggregate remains
+retained. Publication uses the exact approved archive without rebuilding.
+
+Save repair proof uses controlled old-disk injection in actual VS Code, alongside
+ordinary native Save passes. The earlier diagnostic trace may itself have
+triggered a save-participant budget abort; it is not proof of spontaneous data
+loss or a vulnerability in 0.10.8.
+
+Native proof is from the isolated guest, not new Windows-host UI testing.
+Existing Windows windows can keep the older loaded extension until reloaded;
+installation alone does not prove their loaded version. No under-120-second
+test-suite result is claimed. Private historical 0.10.9 compatibility does not
+represent an additional public release.
 
 ## What's new in 0.10.8
 
@@ -329,7 +371,7 @@ retains its original release notes, assets, and validation limitations.
 ## Distribution scope
 
 This repository contains official release documentation, not imported
-development history. The corrected 0.10.7 VSIX is the exact independently reviewed and
+development history. The 0.10.10 VSIX is the exact independently reviewed and
 approved archive, unchanged from its verification. The official release notes
 record its publication and limitations.
 
